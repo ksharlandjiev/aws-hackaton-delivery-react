@@ -50,6 +50,7 @@ class App extends Component {
       headers: { "X-Amz-Security-Token": `${await this.getToken()}` },
     })
       .then((orderList) => {
+        
         this.setState({
           orders: orderList,
           loading: false
@@ -66,9 +67,7 @@ class App extends Component {
   
   handleCapture = async (target) => {
     console.log('[handleCapture]', target)
-    this.setState({
-      loading: true
-    }); 
+
     if (target.files) {
       if (target.files.length !== 0) {
         const file = target.files[0];
@@ -103,9 +102,13 @@ class App extends Component {
   }
 
   handleScan(data){
-    this.setState({
-      result: data,
-    })
+    if (!this.state.QRData) { 
+      console.log(data);
+      // this.setState({
+      //   QRData: "asdasd"
+      // }) 
+    }
+
   }
   handleError(err){
     console.error(err)
@@ -123,13 +126,15 @@ class App extends Component {
         <AmplifySignOut />
           <HeaderMenu />
           <Delivery order = { this.state.selectedOrder } handleCapture = { (e) => this.handleCapture(e) } /> 
+          
 
           <Route path="/" exact render={() => <OrderList orders = {this.state.orders } onHandleDelivery = { (e) => this.handleDelivery(e)} />} />
           {
             //this.state.selectedOrder && <Delivery order = { this.state.selectedOrder } handleCapture = { (e) => this.handleCapture(e) } /> 
-            this.state.selectedOrder && <QrReader delay="100" style={previewStyle} onError={this.handleError} onScan={this.handleScan} /> 
+            this.state.selectedOrder && !this.state.QRData && <QrReader delay="100" style={previewStyle} onError={this.handleError} onScan={this.handleScan}  /> 
           }
         </Router>
+        <div>QR Results: {this.state.QRData} </div>
       </div>
     );
   }
