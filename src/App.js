@@ -27,7 +27,8 @@ class App extends Component {
     this.state = {
         orders: [],
         selectedOrder: null,
-        loadung: true
+        loadung: true,
+        proof: null
     }
     this.getToken = this.getToken.bind(this);
     this.handleDelivery = this.handleDelivery.bind(this);
@@ -64,27 +65,30 @@ class App extends Component {
 
   
   handleCapture = async (target) => {
+    console.log('[handleCapture]', target)
     this.setState({
       loading: true
     }); 
     if (target.files) {
       if (target.files.length !== 0) {
         const file = target.files[0];
-        
-        try {
-          await Storage.put(file.name, file, {
-            contentType: 'image/jpeg' // contentType is optional
-          });
+        const newUrl = URL.createObjectURL(file);
 
+        let S3Key = null; 
+        try {
+          S3Key = await Storage.put(file.name, file, {
+            contentType: 'image/png' // contentType is optional
+          });
+        
+          
         } catch (err) {
           console.log('Error uploading file: ', err);
         }          
 
-        const newUrl = URL.createObjectURL(file);
 
         this.setState({
           loading: false,
-          proof: newUrl
+          proof: S3Key
         }); 
       }
     }

@@ -1,6 +1,6 @@
 import { Table,  Button, Icon } from "semantic-ui-react";
 const _key = "orders";
-const TableRowKeyId = "CustomerID";
+const TableRowKeyId = "OrderID";
 
 export default function OrderList(props) {
   //console.log("====>", props);
