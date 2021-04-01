@@ -1,0 +1,42 @@
+{
+    "paths": [
+        {
+            "name": "/deliver",
+            "lambdaFunction": "DeliveryApiLambda",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/deliver"
+        }
+    ],
+    "resourceName": "deliveryAPI",
+    "apiName": "deliveryAPI",
+    "functionArns": [
+        {
+            "lambdaFunction": "DeliveryApiLambda"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-amplify7498e08ab8984-staging-102046-authRole",
+        "unAuthRoleName": "amplify-amplify7498e08ab8984-staging-102046-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "DeliveryApiLambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
