@@ -53,6 +53,7 @@ class App extends Component {
       headers: { "X-Amz-Security-Token": `${await this.getToken()}` },
     })
       .then((orderList) => {
+        console.log('[orderList]',orderList)
         this.setState({
           orders: orderList
         });

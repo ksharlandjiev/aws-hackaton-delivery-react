@@ -6,6 +6,7 @@ export default function OrderList(props) {
   //console.log("====>", props);
   let orderData = (props && props[_key]) || [];
   let tableComponent = "Loading...";
+console.log('orders', orderData);
 
   if (orderData.length > 0) {
     tableComponent = (
