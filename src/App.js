@@ -1,6 +1,9 @@
+import "./App.css";
+
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import "./App.css";
+import { geolocated } from "react-geolocated";
+
 import Amplify, { API, Auth } from "aws-amplify";
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 
@@ -45,4 +48,11 @@ class App extends Component {
     );
   }
 }
-export default withAuthenticator(App);
+
+export default withAuthenticator(geolocated({
+  positionOptions: {
+      enableHighAccuracy: false,
+  },
+  userDecisionTimeout: 5000,
+})(App));
+
