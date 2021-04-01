@@ -28,7 +28,7 @@ function renderTableData(tableData, handleClick) {
   let col = Object.keys(tableData[0]); // this can be defined before the map
   return tableData.map((record) => {
     return (
-      <Table.Row key={record[TableRowKeyId]} >
+      <Table.Row key={record[TableRowKeyId]+'---'+ Math.random()} >
         {col.map((val, index) => {
           // conditional insertion
           return <Table.Cell key={index}>{record[val] || ""}</Table.Cell>;
@@ -44,6 +44,6 @@ function renderTableData(tableData, handleClick) {
 function renderTableHeader(tableData) {
   let header = Object.keys(tableData[0]);
   return header.map((key, index) => {
-    return <Table.HeaderCell key={index}>{key.toUpperCase()}</Table.HeaderCell>;
+    return <Table.HeaderCell key={index+'--'+ Math.random()}>{key.toUpperCase()}</Table.HeaderCell>;
   });
 }
