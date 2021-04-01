@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
-import { NavLink, withRouter } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export default class HeaderMenu extends Component {
   state = {
@@ -24,15 +24,6 @@ export default class HeaderMenu extends Component {
           onClick={this.handleItemClick}
         >
           Pending Deliveries
-        </Menu.Item>
-
-        <Menu.Item
-          as={NavLink} to="/my-orders"
-          name='selected'
-          active={activeItem === 'selected'}
-          onClick={this.handleItemClick}
-        >
-          Selected For Delivery
         </Menu.Item>
       </Menu>
     )

@@ -29,5 +29,11 @@
         }
       ]
     }
+  },
+  "storage": {
+    "deliveryProofS3Bucket": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
   }
 }

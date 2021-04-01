@@ -14,7 +14,9 @@ const awsmobile = {
             "endpoint": "https://nadlmoezsb.execute-api.eu-west-1.amazonaws.com/staging",
             "region": "eu-west-1"
         }
-    ]
+    ],
+    "aws_user_files_s3_bucket": "delivery-proof-s3-aws-hackaton102046-staging",
+    "aws_user_files_s3_bucket_region": "eu-west-1"
 };
 
 
